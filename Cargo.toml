@@ -1,0 +1,45 @@
+[package]
+name = "xtra-persistence"
+version = "0.1.0"
+edition.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+xtra.workspace = true
+xtra-persistence-core.workspace = true
+xtra-persistence-mem.workspace = true
+
+[dev-dependencies.serde]
+workspace = true
+features = ["derive"]
+
+[dev-dependencies.tokio]
+workspace = true
+features = ["full"]
+
+[dev-dependencies.xtra]
+workspace = true
+features = ["tokio", "macros"]
+
+[workspace]
+members = ["crates/*"]
+
+[workspace.package]
+edition = "2021"
+
+[workspace.dependencies]
+serde = "1"
+tokio = "1"
+mongodb = "2.6.0"
+
+[workspace.dependencies.xtra-persistence-core]
+path = "crates/xtra-persistence-core"
+[workspace.dependencies.xtra-persistence-mem]
+path = "crates/xtra-persistence-mem"
+[workspace.dependencies.xtra-persistence-mongo]
+path = "crates/xtra-persistence-mongo"
+
+[workspace.dependencies.xtra]
+git = "https://github.com/Restioson/xtra"
+rev = "d98393a"
